@@ -25,4 +25,4 @@ runs:
       shell: bash
       run: |
         echo "This is test input: ${{ inputs.TEST_INPUT }}"
-        echo "This is test environment variable: ${ENV_INPUT}"
+        echo "This is test environment variable: ${#ENV_INPUT}"
