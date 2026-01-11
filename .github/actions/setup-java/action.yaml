@@ -1,0 +1,16 @@
+name: "Setup Java + Cache Maven"
+description: "Sets up JDK and caches Maven deps"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: "21"
+
+    - uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          maven-${{ runner.os }}-
