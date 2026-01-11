@@ -1,5 +1,11 @@
 name: "Setup Java + Cache Maven"
 description: "Sets up JDK and caches Maven deps"
+
+inputs:
+  TEST_INPUT:
+    description: "This is a test input"
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -14,3 +20,8 @@ runs:
         key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           maven-${{ runner.os }}-
+
+    - name: Test Input
+      shell: bash
+      run: |
+        echo "This is test input: ${{ inputs.TEST_INPUT }}"
